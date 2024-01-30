@@ -13,15 +13,11 @@ declare(strict_types=1);
 
 namespace Pimcore\Bundle\OpensearchClientBundle;
 
-use Pimcore\Bundle\EnterpriseSubscriptionToolsBundle\Bundle\EnterpriseBundleInterface;
-use Pimcore\Bundle\EnterpriseSubscriptionToolsBundle\PimcoreEnterpriseSubscriptionToolsBundle;
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
 
 class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle
 {
-
     public function getPath(): string
     {
         return dirname(__DIR__);
