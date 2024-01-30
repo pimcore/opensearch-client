@@ -19,10 +19,8 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
 use Pimcore\HttpKernel\BundleCollection\BundleCollection;
 
-class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle implements
-    EnterpriseBundleInterface
+class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle
 {
-    private const ENTERPRISE_BUNDLE_LICENSE_ID = 'xLicensex';
 
     public function getPath(): string
     {
@@ -45,15 +43,5 @@ class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle implements
 
         /** @var InstallerInterface|null */
         return $this->container->get(Installer::class);
-    }
-
-    public static function registerDependentBundles(BundleCollection $collection): void
-    {
-        $collection->addBundle(new PimcoreEnterpriseSubscriptionToolsBundle());
-    }
-
-    public function getBundleLicenseId(): string
-    {
-        return self::ENTERPRISE_BUNDLE_LICENSE_ID;
     }
 }

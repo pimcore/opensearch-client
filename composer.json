@@ -1,8 +1,8 @@
 {
-  "name": "pimcore/opensearch-client-bundle",
-  "license": "Pimcore Enterprise License (PEL)",
+  "name": "pimcore/opensearch-client",
+  "license": "GPL-3.0+",
   "type": "pimcore-bundle",
-  "description": "Pimcore Opensearch Client Bundle",
+  "description": "Pimcore Opensearch Client",
   "config": {
     "discard-changes": true,
     "sort-packages": true,
@@ -18,8 +18,7 @@
   "minimum-stability": "dev",
   "require": {
     "php": "~8.1.0 || ~8.2.0",
-    "pimcore/enterprise-subscription-tools": "^1.3",
-    "pimcore/pimcore": "^11.0"
+    "pimcore/pimcore": "^11.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
@@ -36,8 +35,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Pimcore\\Bundle\\OpensearchClientBundle\\": "src/",
-      "Pimcore\\": "core-extension/Pimcore/"
+      "Pimcore\\Bundle\\OpensearchClientBundle\\": "src/"
     }
   },
   "autoload-dev": {
@@ -50,12 +48,6 @@
       "bundles": [
         "Pimcore\\Bundle\\OpensearchClientBundle\\PimcoreOpensearchClientBundle"
       ]
-    }
-  },
-  "repositories": {
-    "pimcore_enterprise": {
-      "type": "composer",
-      "url": "https://enterprise.repo.pimcore.com/"
     }
   }
 }
