@@ -11,7 +11,7 @@ declare(strict_types=1);
  *  @license    http://www.pimcore.org/license     GPLv3
  */
 
-namespace Pimcore\Bundle\xTemplateBundlex;
+namespace Pimcore\Bundle\OpensearchClientBundle;
 
 use Pimcore\Bundle\EnterpriseSubscriptionToolsBundle\Bundle\EnterpriseBundleInterface;
 use Pimcore\Bundle\EnterpriseSubscriptionToolsBundle\PimcoreEnterpriseSubscriptionToolsBundle;
@@ -19,7 +19,7 @@ use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 use Pimcore\Extension\Bundle\Installer\InstallerInterface;
 use Pimcore\HttpKernel\BundleCollection\BundleCollection;
 
-class PimcorexTemplateBundlex extends AbstractPimcoreBundle implements
+class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle implements
     EnterpriseBundleInterface
 {
     private const ENTERPRISE_BUNDLE_LICENSE_ID = 'xLicensex';

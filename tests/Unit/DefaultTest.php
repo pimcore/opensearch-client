@@ -11,7 +11,7 @@ declare(strict_types=1);
  *  @license    http://www.pimcore.org/license     GPLv3
  */
 
-namespace Pimcore\Bundle\xTemplateBundlex\Tests\Unit;
+namespace Pimcore\Bundle\OpensearchClientBundle\Tests\Unit;
 
 use Codeception\Test\Unit;
 

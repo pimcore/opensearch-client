@@ -1,4 +1,4 @@
-# x Template x
+# Opensearch Client
 todo
 
 ## Features in a Nutshell
