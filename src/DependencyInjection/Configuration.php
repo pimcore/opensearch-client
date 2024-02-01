@@ -15,7 +15,9 @@ namespace Pimcore\Bundle\OpenSearchClientBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface; /**
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
+/**
  * @internal
  */
 final class Configuration implements ConfigurationInterface
