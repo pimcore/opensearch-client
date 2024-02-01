@@ -28,11 +28,11 @@ final class OpenSearchClientFactory
         $clientBuilder->setHosts($config['hosts']);
         $clientBuilder->setLogger($logger);
 
-        if (isset($config['username']) && isset($config['password'])) {
+        if (isset($config['username'], $config['password'])) {
             $clientBuilder->setBasicAuthentication($config['username'], $config['password']);
         }
 
-        if (isset($config['ssl_key']) && $config['ssl_cert']) {
+        if (isset($config['ssl_key'], $config['ssl_cert'])) {
             $clientBuilder->setSSLKey($config['ssl_key'], $config['ssl_password'] ?? null);
             $clientBuilder->setSSLCert($config['ssl_cert'], $config['ssl_password'] ?? null);
         }
@@ -49,7 +49,7 @@ final class OpenSearchClientFactory
             $clientBuilder->setSigV4Service($config['aws_service']);
         }
 
-        if (isset($config['aws_key']) && isset($config['aws_secret'])) {
+        if (isset($config['aws_key'], $config['aws_secret'])) {
             $clientBuilder->setSigV4CredentialProvider([
                 'key' => $config['aws_key'],
                 'secret' => $config['aws_secret'],
