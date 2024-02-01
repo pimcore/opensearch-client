@@ -5,12 +5,11 @@ declare(strict_types=1);
  * Pimcore
  *
  * This source file is available under following license:
- * - Pimcore Commercial License (PCL)
+ * - GNU General Public License version 3 (GPLv3)
  *
- * @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
- * @license    http://www.pimcore.org/license     PCL
+ *  @copyright  Copyright (c) Pimcore GmbH (http://www.pimcore.org)
+ *  @license    http://www.pimcore.org/license     GPLv3
  */
-
 
 namespace Pimcore\Bundle\OpenSearchClientBundle\DependencyInjection;
 
@@ -18,20 +17,19 @@ use Exception;
 
 use OpenSearch\Client;
 use Pimcore\Bundle\OpenSearchClientBundle\OpenSearchClientFactory;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @internal
  */
 final class PimcoreOpenSearchClientExtension extends ConfigurableExtension implements PrependExtensionInterface
 {
-
     const CLIENT_SERVICE_PREFIX = 'pimcore.open_search_client.';
 
     /**
