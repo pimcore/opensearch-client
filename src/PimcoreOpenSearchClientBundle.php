@@ -11,12 +11,11 @@ declare(strict_types=1);
  *  @license    http://www.pimcore.org/license     GPLv3
  */
 
-namespace Pimcore\Bundle\OpensearchClientBundle;
+namespace Pimcore\Bundle\OpenSearchClientBundle;
 
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
-use Pimcore\Extension\Bundle\Installer\InstallerInterface;
 
-class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle
+class PimcoreOpenSearchClientBundle extends AbstractPimcoreBundle
 {
     public function getPath(): string
     {
@@ -31,13 +30,5 @@ class PimcoreOpensearchClientBundle extends AbstractPimcoreBundle
     public function getCssPaths(): array
     {
         return [];
-    }
-
-    public function getInstaller(): ?InstallerInterface
-    {
-        parent::getInstaller();
-
-        /** @var InstallerInterface|null */
-        return $this->container->get(Installer::class);
     }
 }
