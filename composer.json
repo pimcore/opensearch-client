@@ -18,7 +18,8 @@
   "minimum-stability": "dev",
   "require": {
     "php": "~8.1.0 || ~8.2.0",
-    "pimcore/pimcore": "^11.1"
+    "pimcore/pimcore": "^11.1",
+    "opensearch-project/opensearch-php": "^2.2.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
@@ -35,18 +36,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Pimcore\\Bundle\\OpensearchClientBundle\\": "src/"
+      "Pimcore\\Bundle\\OpenSearchClientBundle\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Pimcore\\Bundle\\OpensearchClientBundle\\Tests\\": "tests"
+      "Pimcore\\Bundle\\OpenSearchClientBundle\\Tests\\": "tests"
     }
   },
   "extra": {
     "pimcore": {
       "bundles": [
-        "Pimcore\\Bundle\\OpensearchClientBundle\\PimcoreOpensearchClientBundle"
+        "Pimcore\\Bundle\\OpensearchClientBundle\\PimcoreOpenSearchClientBundle"
       ]
     }
   }

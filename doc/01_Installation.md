@@ -16,19 +16,14 @@ To install the Opensearch Client Bundle, follow the three steps below:
 composer require pimcore/opensearch-client-bundle
 ```
 
-2) Make sure the bundle is enabled in the `config/bundles.php` file. The following lines should be added:
+2) This bundle is a standard symfony bundle. If not required and activated by another bundle, it can be enabled by adding it to the `bundles.php` of your application.
+
 ```php
-use Pimcore\Bundle\OpensearchClientBundle\PimcoreOpensearchClientBundle;
+use Pimcore\Bundle\OpenSearchClientBundle\PimcoreOpenSearchClientBundle;
 // ...
 return [
     // ...
-    PimcoreOpensearchClientBundle::class => ['all' => true],
+    PimcoreOpenSearchClientBundle::class => ['all' => true],
     // ...
 ];  
-```
-
-3) Install the bundle:
-
-```bash
-bin/console pimcore:bundle:install PimcoreOpensearchClientBundle
 ```
