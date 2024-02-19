@@ -27,6 +27,11 @@ final class OpenSearchClientFactory
         $clientBuilder = new ClientBuilder();
         $clientBuilder->setHosts($config['hosts']);
         $clientBuilder->setLogger($logger);
+        $clientBuilder->setConnectionParams([
+            'client' => [
+                'ignore' => [404],
+            ],
+        ]);
 
         if (isset($config['username'], $config['password'])) {
             $clientBuilder->setBasicAuthentication($config['username'], $config['password']);
