@@ -35,7 +35,9 @@ final class Filter404Handler extends AbstractHandler
         if ($ignore) {
             $this->ignoreNextResponseWarning = true;
         } else {
-            $ignore = $this->ignoreNextResponseWarning && $record->message === 'Response';
+            $ignore = $this->ignoreNextResponseWarning
+                && $record->level === Level::Warning
+                && $record->message === 'Response';
             $this->ignoreNextResponseWarning = false;
         }
 
