@@ -12,6 +12,7 @@ pimcore_open_search_client:
             password: 'admin'
             username: 'somethingsecret'
             logger_channel: 'pimcore.opensearch'
+            log_404_errors: true #Enable logging of 404 errors (default: false)
         statistics:
             hosts: ['https://statistics-node:9200']
             logger_channel: 'pimcore.statistics'

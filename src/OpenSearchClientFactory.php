@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace Pimcore\Bundle\OpenSearchClientBundle;
 
+use Monolog\Logger;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
+use Pimcore\Bundle\OpenSearchClientBundle\LogHandler\Filter404Handler;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -26,6 +28,11 @@ final class OpenSearchClientFactory
     {
         $clientBuilder = new ClientBuilder();
         $clientBuilder->setHosts($config['hosts']);
+
+        if (!$config['log_404_errors'] && $logger instanceof Logger) {
+            $logger->pushHandler(new Filter404Handler());
+        }
+
         $clientBuilder->setLogger($logger);
 
         if (isset($config['username'], $config['password'])) {
