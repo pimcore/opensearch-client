@@ -29,7 +29,7 @@ final class OpenSearchClientFactory
         $clientBuilder = new ClientBuilder();
         $clientBuilder->setHosts($config['hosts']);
 
-        if(!$config['log_404_errors'] && $logger instanceof Logger) {
+        if (!$config['log_404_errors'] && $logger instanceof Logger) {
             $logger->pushHandler(new Filter404Handler());
         }
 
