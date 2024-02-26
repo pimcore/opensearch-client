@@ -30,6 +30,7 @@ final class OpenSearchClientFactory
         $clientBuilder = new ClientBuilder();
         $clientBuilder->setHosts($config['hosts']);
 
+        // TODO remove if when remove support for Pimcore 10
         if (Version::getMajorVersion() >= 11) {
             if (!$config['log_404_errors'] && $logger instanceof Logger) {
                 $logger->pushHandler(new Filter404Handler());

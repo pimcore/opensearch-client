@@ -18,6 +18,7 @@ use Monolog\Level;
 use Monolog\LogRecord;
 use Pimcore\Version;
 
+// TODO remove if when remove support for Pimcore 10
 if(Version::getMajorVersion() >= 11) {
 
     /**
