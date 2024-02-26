@@ -22,7 +22,6 @@
     "opensearch-project/opensearch-php": "^2.2.0"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest",
     "codeception/codeception": "^4.1.12 || ^5.0.10",
     "codeception/phpunit-wrapper": "^9",
     "codeception/module-asserts": "^2",
