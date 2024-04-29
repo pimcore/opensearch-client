@@ -77,4 +77,3 @@ $config->setRules([
 
 $config->setFinder($finder);
 return $config;
-
