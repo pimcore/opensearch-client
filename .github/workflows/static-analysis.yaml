@@ -37,9 +37,6 @@ jobs:
               with:
                   coverage: "none"
                   php-version: "${{ matrix.php-version }}"
-            - name: "Add authentication for private pimcore packages"
-              run: |
-                  composer config --global --auth http-basic.enterprise.repo.pimcore.com token ${{ secrets.COMPOSER_PIMCORE_REPO_TOKEN }}
             - name: "Setup Pimcore environment"
               run: |
                   .github/ci/scripts/setup-pimcore-environment.sh
