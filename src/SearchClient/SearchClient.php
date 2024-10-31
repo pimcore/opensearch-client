@@ -133,7 +133,6 @@ final class SearchClient implements OpenSearchClientInterface
         }
     }
 
-
     /**
      * @throws ClientException
      */

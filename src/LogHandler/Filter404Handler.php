@@ -22,7 +22,7 @@ use Monolog\LogRecord;
 use Pimcore\Version;
 
 // TODO remove if when remove support for Pimcore 10
-if(Version::getMajorVersion() >= 11) {
+if (Version::getMajorVersion() >= 11) {
 
     /**
      * Ignores warning messages for 404 errors as they are spamming the logs
