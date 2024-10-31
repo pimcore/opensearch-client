@@ -20,6 +20,7 @@ use Exception;
 
 use OpenSearch\Client;
 use Pimcore\Bundle\OpenSearchClientBundle\OpenSearchClientFactory;
+use Pimcore\Bundle\OpenSearchClientBundle\SearchClient\SearchClient;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -34,6 +35,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 final class PimcoreOpenSearchClientExtension extends ConfigurableExtension implements PrependExtensionInterface
 {
     const CLIENT_SERVICE_PREFIX = 'pimcore.open_search_client.';
+
+    const PIMCORE_CLIENT_PREFIX = 'pimcore.openSearch.custom_client.';
 
     /**
      *
@@ -53,6 +56,11 @@ final class PimcoreOpenSearchClientExtension extends ConfigurableExtension imple
             $definition->addTag('monolog.logger', ['channel' => $clientConfig['logger_channel']]);
             $definition->setPublic(true);
             $container->setDefinition(self::CLIENT_SERVICE_PREFIX . $clientName, $definition);
+
+            $customClientDefinition = new Definition(SearchClient::class);
+            $customClientDefinition->setArgument('$client', $definition);
+            $customClientDefinition->setPublic(true);
+            $container->setDefinition(self::PIMCORE_CLIENT_PREFIX . $clientName, $customClientDefinition);
         }
     }
 
