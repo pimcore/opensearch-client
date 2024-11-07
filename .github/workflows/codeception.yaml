@@ -18,7 +18,6 @@ env:
     PIMCORE_PROJECT_ROOT: ${{ github.workspace }}
     APP_ENV: test
     PIMCORE_TEST: 1
-    SYMFONY_DEPRECATIONS_HELPER: weak # TODO remove when remove support for Pimcore 10
 
 jobs:
     codeception-tests:
@@ -28,7 +27,6 @@ jobs:
         strategy:
             matrix:
                 include:
-                    - { php-version: 8.0, dependencies: lowest, pimcore_version: "", experimental: false }
                     - { php-version: 8.1, dependencies: lowest, pimcore_version: "", experimental: false }
                     - { php-version: 8.2, dependencies: highest, pimcore_version: "", experimental: false }
 
