@@ -167,7 +167,7 @@ final class SearchClient implements OpenSearchClientInterface
     public function deleteByQuery(array $params): array
     {
         try {
-            return $this->client->updateByQuery($params);
+            return $this->client->deleteByQuery($params);
         } catch (Exception $exception) {
             throw new ClientException(
                 sprintf('Failed to delete by query: %s', $exception->getMessage())
