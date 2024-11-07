@@ -20,7 +20,6 @@ use Monolog\Logger;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
 use Pimcore\Bundle\OpenSearchClientBundle\LogHandler\Filter404Handler;
-use Pimcore\Version;
 use Psr\Log\LoggerInterface;
 
 /**

@@ -19,7 +19,6 @@ namespace Pimcore\Bundle\OpenSearchClientBundle\LogHandler;
 use Monolog\Handler\AbstractHandler;
 use Monolog\Level;
 use Monolog\LogRecord;
-use Pimcore\Version;
 
 /**
  * Ignores warning messages for 404 errors as they are spamming the logs
@@ -43,6 +42,7 @@ final class Filter404Handler extends AbstractHandler
                 && $record->message === 'Response';
             $this->ignoreNextResponseWarning = false;
         }
+
         return $ignore;
     }
 
