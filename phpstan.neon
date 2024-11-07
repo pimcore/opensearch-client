@@ -7,7 +7,6 @@ parameters:
         - phpstan-bootstrap.php
     excludePaths:
         - src/Tests/*
-        - src/LogHandler/Filter404Handler.php # TODO remove when remove support for Pimcore 10
 
 includes:
     - phpstan-baseline.neon

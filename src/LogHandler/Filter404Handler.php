@@ -21,39 +21,33 @@ use Monolog\Level;
 use Monolog\LogRecord;
 use Pimcore\Version;
 
-// TODO remove if when remove support for Pimcore 10
-if (Version::getMajorVersion() >= 11) {
+/**
+ * Ignores warning messages for 404 errors as they are spamming the logs
+ *
+ * @internal
+ */
+final class Filter404Handler extends AbstractHandler
+{
+    private bool $ignoreNextResponseWarning = false;
 
-    /**
-     * Ignores warning messages for 404 errors as they are spamming the logs
-     *
-     * @internal
-     */
-    final class Filter404Handler extends AbstractHandler
+    public function isHandling(LogRecord $record): bool
     {
-        private bool $ignoreNextResponseWarning = false;
-
-        public function isHandling(LogRecord $record): bool
-        {
-            $ignore =
-                $record->level === Level::Warning
-                && ($record->context['HTTP code'] ?? null) === 404;
-
-            if ($ignore) {
-                $this->ignoreNextResponseWarning = true;
-            } else {
-                $ignore = $this->ignoreNextResponseWarning
-                    && $record->level === Level::Warning
-                    && $record->message === 'Response';
-                $this->ignoreNextResponseWarning = false;
-            }
-
-            return $ignore;
+        $ignore =
+            $record->level === Level::Warning
+            && ($record->context['HTTP code'] ?? null) === 404;
+        if ($ignore) {
+            $this->ignoreNextResponseWarning = true;
+        } else {
+            $ignore = $this->ignoreNextResponseWarning
+                && $record->level === Level::Warning
+                && $record->message === 'Response';
+            $this->ignoreNextResponseWarning = false;
         }
+        return $ignore;
+    }
 
-        public function handle(LogRecord $record): bool
-        {
-            return $this->isHandling($record);
-        }
+    public function handle(LogRecord $record): bool
+    {
+        return $this->isHandling($record);
     }
 }
