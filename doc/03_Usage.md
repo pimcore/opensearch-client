@@ -20,7 +20,7 @@ use OpenSearch\Client;
 final class MyService
 {
     public function __construct(
-        private reasonly Client $openSearchClient
+        private readonly Client $openSearchClient
     )
     {
         //...
