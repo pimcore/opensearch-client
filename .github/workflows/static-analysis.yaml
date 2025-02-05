@@ -24,10 +24,9 @@ jobs:
         strategy:
             matrix:
                 include:
-                    - { php-version: "8.0", dependencies: "lowest", experimental: false }
                     - { php-version: "8.1", dependencies: "lowest", experimental: false }
                     - { php-version: "8.2", dependencies: "highest", experimental: false }
-                    - { php-version: "8.2", dependencies: "highest", pimcore_version: "11.x-dev as 11.99.9", experimental: true }
+                    - { php-version: "8.3", dependencies: "highest", pimcore_version: "11.5", experimental: true }
         steps:
             - name: "Checkout code"
               uses: "actions/checkout@v2"
@@ -61,7 +60,7 @@ jobs:
 
             - name: "Upload baseline file"
               if: ${{ failure() }}
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v4
               with:
                   name: phpstan-baseline.neon
                   path: phpstan-baseline.neon
