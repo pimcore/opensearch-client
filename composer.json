@@ -21,6 +21,9 @@
     "pimcore/pimcore": "12.x-dev",
     "opensearch-project/opensearch-php": "^2.2.0"
   },
+  "conflict": {
+    "opensearch-project/opensearch-php": ">=2.4"
+  },
   "require-dev": {
     "codeception/codeception": "^4.1.12 || ^5.0.10",
     "codeception/phpunit-wrapper": "^9",
