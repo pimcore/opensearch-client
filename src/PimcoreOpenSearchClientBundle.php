@@ -16,10 +16,17 @@ declare(strict_types=1);
 
 namespace Pimcore\Bundle\OpenSearchClientBundle;
 
+use Pimcore\Bundle\OpenSearchClientBundle\DependencyInjection\PimcoreOpenSearchClientExtension;
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 class PimcoreOpenSearchClientBundle extends AbstractPimcoreBundle
 {
+    public function getContainerExtension(): ExtensionInterface
+    {
+        return new PimcoreOpenSearchClientExtension();
+    }
+
     public function getPath(): string
     {
         return dirname(__DIR__);
