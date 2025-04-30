@@ -1,6 +1,6 @@
 {
   "name": "pimcore/opensearch-client",
-  "license": "GPL-3.0+",
+  "license": "proprietary",
   "type": "pimcore-bundle",
   "description": "Pimcore Opensearch Client",
   "config": {
