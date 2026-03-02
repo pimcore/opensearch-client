@@ -10,6 +10,6 @@ It allows to configure one or more Opensearch clients with different configurati
 | 1.0.0                  | 1.0.0-2.1.0        |
 
 ## Documentation Overview
-- [Installation](./doc/01_Installation.md)
+- [Installation](./doc/01_Installation/README.md)
 - [Configuration](./doc/02_Configuration.md)
 - [Usage](./doc/03_Usage.md)
