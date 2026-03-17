@@ -46,6 +46,10 @@ final class PimcoreOpenSearchClientExtension extends ConfigurableExtension imple
         $loader->load('services.yaml');
 
         foreach ($mergedConfig['clients'] as $clientName => $clientConfig) {
+            if (isset($clientConfig['dsn']) && $clientConfig['dsn'] !== null && $clientConfig['dsn'] !== '') {
+                $clientConfig = $this->parseDsn($clientConfig['dsn'], $clientConfig);
+            }
+
             $definition = new Definition(Client::class);
             $definition->setFactory([OpenSearchClientFactory::class, 'createOpenSearchClient']);
             $definition->setArgument('$logger', new Reference('logger'));
@@ -59,6 +63,44 @@ final class PimcoreOpenSearchClientExtension extends ConfigurableExtension imple
             $customClientDefinition->setPublic(true);
             $container->setDefinition(self::PIMCORE_CLIENT_PREFIX . $clientName, $customClientDefinition);
         }
+    }
+
+    /**
+     * Parse DSN into config array, merging with existing config.
+     * DSN format: opensearch://user:pass@host:port?ssl_verify=bool
+     *
+     * DSN values override file-based config for: hosts, username, password, ssl_verification.
+     * Other config keys (logger_channel, aws_*, ssl_key, ssl_cert) remain from file config.
+     */
+    private function parseDsn(string $dsn, array $config): array
+    {
+        $parsed = parse_url($dsn);
+        if ($parsed === false) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid OpenSearch DSN: "%s"',
+                $dsn,
+            ));
+        }
+
+        $host = $parsed['host'] ?? 'localhost';
+        $port = $parsed['port'] ?? 9200;
+        $config['hosts'] = [sprintf('%s:%d', $host, $port)];
+
+        if (isset($parsed['user'])) {
+            $config['username'] = rawurldecode($parsed['user']);
+        }
+        if (isset($parsed['pass'])) {
+            $config['password'] = rawurldecode($parsed['pass']);
+        }
+
+        if (isset($parsed['query'])) {
+            parse_str($parsed['query'], $queryParams);
+            if (isset($queryParams['ssl_verify'])) {
+                $config['ssl_verification'] = $queryParams['ssl_verify'] === 'true';
+            }
+        }
+
+        return $config;
     }
 
     /**

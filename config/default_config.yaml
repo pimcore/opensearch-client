@@ -1,3 +1,4 @@
 pimcore_open_search_client:
   clients:
     default:
+      dsn: '%env(default::PIMCORE_OPENSEARCH_DSN)%'
