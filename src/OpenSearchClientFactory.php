@@ -26,6 +26,10 @@ final class OpenSearchClientFactory
 {
     public static function createOpenSearchClient(LoggerInterface $logger, array $config): Client
     {
+        if (isset($config['dsn']) && $config['dsn'] !== null && $config['dsn'] !== '') {
+            $config = self::parseDsn($config['dsn'], $config);
+        }
+
         $clientBuilder = new ClientBuilder();
         $clientBuilder->setHosts($config['hosts']);
 
@@ -64,5 +68,50 @@ final class OpenSearchClientFactory
         }
 
         return $clientBuilder->build();
+    }
+
+    /**
+     * Parse DSN into config array, merging with existing config.
+     * DSN format: opensearch://user:pass@host:port?ssl=bool&ssl_verify=bool
+     *
+     * DSN values override file-based config for: hosts, username, password, ssl_verification.
+     * The `ssl` query parameter controls whether HTTPS or HTTP is used (default: true).
+     * The `ssl_verify` query parameter controls certificate verification (independent of `ssl`).
+     * Other config keys (logger_channel, aws_*, ssl_key, ssl_cert) remain from file config.
+     */
+    private static function parseDsn(string $dsn, array $config): array
+    {
+        $parsed = parse_url($dsn);
+        if ($parsed === false) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid OpenSearch DSN: "%s"',
+                $dsn,
+            ));
+        }
+
+        $host = $parsed['host'] ?? 'localhost';
+        $port = $parsed['port'] ?? 9200;
+
+        $queryParams = [];
+        if (isset($parsed['query'])) {
+            parse_str($parsed['query'], $queryParams);
+        }
+
+        $useSsl = ($queryParams['ssl'] ?? 'true') === 'true';
+        $protocol = $useSsl ? 'https' : 'http';
+        $config['hosts'] = [sprintf('%s://%s:%d', $protocol, $host, $port)];
+
+        if (isset($parsed['user'])) {
+            $config['username'] = rawurldecode($parsed['user']);
+        }
+        if (isset($parsed['pass'])) {
+            $config['password'] = rawurldecode($parsed['pass']);
+        }
+
+        if (isset($queryParams['ssl_verify'])) {
+            $config['ssl_verification'] = $queryParams['ssl_verify'] === 'true';
+        }
+
+        return $config;
     }
 }
