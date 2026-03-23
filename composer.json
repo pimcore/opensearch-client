@@ -25,7 +25,7 @@
     "opensearch-project/opensearch-php": ">=2.4"
   },
   "require-dev": {
-    "codeception/codeception": "^5.3",
+    "codeception/codeception": "^5.3.1",
     "codeception/phpunit-wrapper": "^10",
     "codeception/module-asserts": "^2",
     "codeception/module-symfony": "^3.7.1",
@@ -33,7 +33,7 @@
     "phpstan/phpstan-symfony": "^2.0",
     "phpunit/phpunit": "^10.5",
     "nyholm/psr7": "^1",
-    "symfony/phpunit-bridge": "^7.0",
+    "symfony/phpunit-bridge": "^7.2",
     "fakerphp/faker": "^1.23"
   },
   "autoload": {
