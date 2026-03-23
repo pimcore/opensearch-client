@@ -26,7 +26,7 @@ final class OpenSearchClientFactory
 {
     public static function createOpenSearchClient(LoggerInterface $logger, array $config): Client
     {
-        if (isset($config['dsn']) && $config['dsn'] !== null && $config['dsn'] !== '') {
+        if (isset($config['dsn']) && $config['dsn'] !== '') {
             $config = self::parseDsn($config['dsn'], $config);
         }
 
