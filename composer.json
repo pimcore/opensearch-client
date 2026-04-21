@@ -19,19 +19,19 @@
   "require": {
     "php": "~8.4.0 || ~8.5.0",
     "pimcore/pimcore": "^2026.1",
-    "opensearch-project/opensearch-php": "^2.2.0"
+    "opensearch-project/opensearch-php": "^2.2.0",
+    "react/promise": "^2.11"
   },
   "conflict": {
     "opensearch-project/opensearch-php": ">=2.4"
   },
   "require-dev": {
-    "codeception/codeception": "^5.3.1",
-    "codeception/phpunit-wrapper": "^10",
+    "codeception/codeception": "^5.3.5",
     "codeception/module-asserts": "^2",
     "codeception/module-symfony": "^3.7.1",
     "phpstan/phpstan": "2.1.40",
     "phpstan/phpstan-symfony": "^2.0",
-    "phpunit/phpunit": "^10.5",
+    "phpunit/phpunit": "^12.5.23 || ^13.1.7",
     "nyholm/psr7": "^1",
     "symfony/phpunit-bridge": "^7.2",
     "fakerphp/faker": "^1.23"
