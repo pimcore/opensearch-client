@@ -7,7 +7,11 @@ It allows to configure one or more Opensearch clients with different configurati
 
 | Pimcore Client Version | OpenSearch Version |
 |------------------------|--------------------|
-| 1.0.0                  | 1.0.0-2.1.0        |
+| >= 1.0                 | >= 1.0, < 3.0      |
+
+OpenSearch 3 is not supported yet: all client versions ship the
+`opensearch-project/opensearch-php` client in version `^2.2`, which targets
+OpenSearch 1.x and 2.x servers.
 
 ## Documentation Overview
 - [Installation](./doc/01_Installation/README.md)
