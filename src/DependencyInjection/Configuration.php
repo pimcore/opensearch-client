@@ -22,7 +22,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 final class Configuration implements ConfigurationInterface
 {
-    public const ROOT_NODE = 'pimcore_opensearch_client';
+    public const ROOT_NODE = 'pimcore_open_search_client';
 
     public function getConfigTreeBuilder(): TreeBuilder
     {
