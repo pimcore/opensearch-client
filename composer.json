@@ -52,7 +52,7 @@
     },
     "pimcore": {
       "bundles": [
-        "Pimcore\\Bundle\\OpensearchClientBundle\\PimcoreOpenSearchClientBundle"
+        "Pimcore\\Bundle\\OpenSearchClientBundle\\PimcoreOpenSearchClientBundle"
       ]
     }
   }
