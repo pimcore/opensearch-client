@@ -20,7 +20,7 @@
     "php": "~8.4.0 || ~8.5.0",
     "pimcore/pimcore": "^2026.1",
     "opensearch-project/opensearch-php": "^2.2.0",
-    "react/promise": "^2.11"
+    "react/promise": "^2.11 || ^3.0"
   },
   "conflict": {
     "opensearch-project/opensearch-php": ">=2.4"
