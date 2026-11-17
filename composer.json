@@ -22,9 +22,6 @@
     "opensearch-project/opensearch-php": "^2.2.0",
     "react/promise": "^2.11 || ^3.0"
   },
-  "conflict": {
-    "opensearch-project/opensearch-php": ">=2.4"
-  },
   "require-dev": {
     "codeception/codeception": "^5.3.5",
     "codeception/module-asserts": "^3.0",
