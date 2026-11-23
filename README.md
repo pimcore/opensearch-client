@@ -8,10 +8,13 @@ It allows to configure one or more Opensearch clients with different configurati
 | Pimcore Client Version | OpenSearch Version | opensearch-project/opensearch-php |
 |------------------------|--------------------|-----------------------------------|
 | >= 1.0, < 2026.4       | >= 1.0, < 3.0      | ^2.2, < 2.4                       |
-| >= 2026.4              | >= 1.0, 2.x, 3.x   | ^2.2                              |
+| >= 2026.4              | >= 1.0, < 3.0      | ^2.2                              |
+| >= 2026.4              | 3.x                | >= 2.4.6 (within `^2.2`)          |
 
-OpenSearch 3 requires `opensearch-project/opensearch-php` 2.4.6 or later, the first client release
-tested against OpenSearch 3 upstream. Bundle versions before 2026.4 pin the client below 2.4.
+The bundle's constraint is `^2.2` from 2026.4 on. For OpenSearch 3 use `opensearch-project/opensearch-php`
+2.4.6 or later, the first client release tested against OpenSearch 3 upstream; a plain `composer update`
+resolves the newest 2.x client, so new installations get it automatically, while a project that pinned an
+older 2.x client must lift that pin first. Bundle versions before 2026.4 pin the client below 2.4.
 See [Upgrade](./doc/04_Upgrade.md).
 
 ## Documentation Overview
