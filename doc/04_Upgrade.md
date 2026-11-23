@@ -4,20 +4,8 @@ Following steps are necessary during updating to newer versions.
 ## Upgrade to 2026.4.0
 - Removed the `conflict` with `opensearch-project/opensearch-php` `>= 2.4`. The constraint stays `^2.2`, so
   Composer may now install the 2.4 to 2.7 client. opensearch-php 2.4.6 and later are tested upstream against
-  OpenSearch 3; this is the prerequisite for running the bundle against an OpenSearch 3 cluster. Projects that
-  must stay on the older client can pin `opensearch-project/opensearch-php` themselves.
-- **Staying on the previous client:** opensearch-php 2.4 to 2.7 work on OpenSearch 2 as well, so no pin is
-  needed to stay on OpenSearch 2. To keep the 2.3 client anyway (for example to avoid the deprecation notices),
-  add the pin to the project's root `composer.json` before the next `composer update`:
-
-  ```json
-  {
-      "require": {
-          "opensearch-project/opensearch-php": "^2.2 <2.4"
-      }
-  }
-  ```
-
+  OpenSearch 3; this is the prerequisite for running the bundle against an OpenSearch 3 cluster. Every 2.x
+  client supports OpenSearch 1 and 2 as well, so projects staying on OpenSearch 2 need no pin.
 - Nothing changes in the bundle's API: `OpenSearchClientFactory` still builds the client through
   `OpenSearch\ClientBuilder`, the `SearchClient` adapter is unchanged, and responses are still plain arrays.
 - opensearch-php 2.4 deprecates `OpenSearch\ClientBuilder` (replaced by `OpenSearch\SymfonyClientFactory` /
